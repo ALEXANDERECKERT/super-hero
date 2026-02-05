@@ -3,7 +3,6 @@ let textSprite: TextSprite = null
 let SelectedPowerSprite: Sprite = null
 let MySpriteCameraPhantom: Sprite = null
 let mySprite: Sprite = null
-let CurrentSprites: Image[][] = []
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
@@ -13,11 +12,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (0 == 0) {
-    	
-    } else {
-    	
-    }
+	
 })
 function LoadGameMenu () {
     scene.setBackgroundImage(img`
@@ -164,13 +159,106 @@ function LoadGameMenu () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Player)
+    animation.runImageAnimation(
+    SelectedPowerSprite,
+    [img`
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        ffffff7fffffff7ffffff
+        fffff7f5555555f7fffff
+        ffff7f5fffffff5f7ffff
+        fff7f5fffffffff5f7fff
+        ffff555fffffff555ffff
+        ffff5555fffff5555ffff
+        ffff55555fff55555ffff
+        ffff555555f555555ffff
+        ffff5fffff5fffff5ffff
+        ffff5fffff5fffff5ffff
+        ffff5ffff555ffff5ffff
+        fff7f5fff555fff5f7fff
+        ffff7f5f55555f5f7ffff
+        fffff7f5555555f7fffff
+        ffffff7fffffff7ffffff
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        `,img`
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        fffff7fffffffff7fffff
+        ffff7fffffffffff7ffff
+        fff7fff5555555fff7fff
+        ff7fff5fffffff5fff7ff
+        fffff5fffffffff5fffff
+        ffff555fffffff555ffff
+        ffff5555fffff5555ffff
+        ffff55555fff55555ffff
+        ffff555555f555555ffff
+        ffff5fffff5fffff5ffff
+        ffff5fffff5fffff5ffff
+        ffff5ffff555ffff5ffff
+        fffff5fff555fff5fffff
+        ff7fff5f55555f5fff7ff
+        fff7fff5555555fff7fff
+        ffff7fffffffffff7ffff
+        fffff7fffffffff7fffff
+        fffffffffffffffffffff
+        `,img`
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        ffff7fffffffffff7ffff
+        fff7fffffffffffff7fff
+        ff7fffffffffffffff7ff
+        f7fffff5555555fffff7f
+        ffffff5fffffff5ffffff
+        fffff5fffffffff5fffff
+        ffff555fffffff555ffff
+        ffff5555fffff5555ffff
+        ffff55555fff55555ffff
+        ffff555555f555555ffff
+        ffff5fffff5fffff5ffff
+        ffff5fffff5fffff5ffff
+        ffff5ffff555ffff5ffff
+        fffff5fff555fff5fffff
+        ffffff5f55555f5ffffff
+        f7fffff5555555fffff7f
+        ff7fffffffffffffff7ff
+        fff7fffffffffffff7fff
+        ffff7fffffffffff7ffff
+        `,img`
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        fffffff5555555fffffff
+        ffffff5fffffff5ffffff
+        fffff5fffffffff5fffff
+        ffff555fffffff555ffff
+        ffff5555fffff5555ffff
+        ffff55555fff55555ffff
+        ffff555555f555555ffff
+        ffff5fffff5fffff5ffff
+        ffff5fffff5fffff5ffff
+        ffff5ffff555ffff5ffff
+        fffff5fff555fff5fffff
+        ffffff5f55555f5ffffff
+        fffffff5555555fffffff
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        fffffffffffffffffffff
+        `],
+    450,
+    false
+    )
 }
 function LoadGame () {
     tiles.loadMap(tiles.createMap(tilemap`level2`))
     scene.cameraFollowSprite(MySpriteCameraPhantom)
     controller.moveSprite(mySprite, 100, 0)
     mySprite.setPosition(10, 140)
-    CurrentSprites = [assets.animation`Radiation Icon Animation`, 1]
     mySprite = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -209,5 +297,5 @@ function LoadGame () {
         `, SpriteKind.Player)
 }
 game.onUpdate(function () {
-    MySpriteCameraPhantom.setPosition(mySprite.x, mySprite.y - 45)
+	
 })
