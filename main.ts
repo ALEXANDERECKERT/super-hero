@@ -1,5 +1,23 @@
+let selectedPowerNumber = 0
+let textSprite: TextSprite = null
+let SelectedPowerSprite: Sprite = null
+let MySpriteCameraPhantom: Sprite = null
+let mySprite: Sprite = null
+let CurrentSprites: Image[][] = []
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 	
+})
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (0 == 0) {
+    	
+    }
+})
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (0 == 0) {
+    	
+    } else {
+    	
+    }
 })
 function LoadGameMenu () {
     scene.setBackgroundImage(img`
@@ -124,61 +142,72 @@ function LoadGameMenu () {
         222222e2ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2e222222
         222222eeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeee222222
         `)
+    selectedPowerNumber = 0
     game.showLongText("Choose Your Path!", DialogLayout.Top)
+    textSprite = textsprite.create("Electromagnetic")
+    textSprite.setPosition(72, 7)
+    SelectedPowerSprite = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
 }
 function LoadGame () {
     tiles.loadMap(tiles.createMap(tilemap`level2`))
     scene.cameraFollowSprite(MySpriteCameraPhantom)
     controller.moveSprite(mySprite, 100, 0)
     mySprite.setPosition(10, 140)
+    CurrentSprites = [assets.animation`Radiation Icon Animation`, 1]
+    mySprite = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . f f f f f . . . . . . 
+        . . . . . f . . . f . . . . . . 
+        . . . . . f f . . f . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f f f f f f f . . . . 
+        . . . . . . . f . . . . . . . . 
+        . . . . . . . f . . . . . . . . 
+        . . . . . . . f . . . . . . . . 
+        . . . . . . . f . . . . . . . . 
+        . . . . f . . f . . . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f . . . . . f . . . . . 
+        . . . . f . . . . . f . . . . . 
+        `, SpriteKind.Player)
+    MySpriteCameraPhantom = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
 }
-let MySpriteCameraPhantom: Sprite = null
-let mySprite: Sprite = null
-mySprite = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . f f f f f . . . . . . 
-    . . . . . f . . . f . . . . . . 
-    . . . . . f f . . f . . . . . . 
-    . . . . . . f f f f . . . . . . 
-    . . . . f f f f f f f f . . . . 
-    . . . . . . . f . . . . . . . . 
-    . . . . . . . f . . . . . . . . 
-    . . . . . . . f . . . . . . . . 
-    . . . . . . . f . . . . . . . . 
-    . . . . f . . f . . . . . . . . 
-    . . . . f f f f f f f . . . . . 
-    . . . . f . . . . . f . . . . . 
-    . . . . f . . . . . f . . . . . 
-    `, SpriteKind.Player)
-MySpriteCameraPhantom = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
-LoadGameMenu()
-let textSprite = textsprite.create("Classic")
-textSprite.setPosition(72, 7)
-let Strength = sprites.create(assets.image`myImage`, SpriteKind.Player)
-Strength.setPosition(72, 7)
-let TS2 = textsprite.create("Electromagnetic")
-TS2.setPosition(73, 45)
-let TS3 = textsprite.create("Atomic")
-TS3.setPosition(73, 95)
 game.onUpdate(function () {
     MySpriteCameraPhantom.setPosition(mySprite.x, mySprite.y - 45)
 })
